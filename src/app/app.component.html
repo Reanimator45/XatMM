@@ -1,19 +1,27 @@
-<header>
-  <img src="../assets/foto-perfil.jpg" alt="Foto de perfil" class="profile-pic"> 💬 Momo 🐢
+<!-- app.component.html -->
+<header class="d-flex align-items-center p-2 shadow-sm">
+  <img src="../assets/foto-perfil.jpg" alt="Foto de perfil" class="profile-pic me-2"> 💬 Momo 🐢
 </header>
+
 <div class="chat-container" id="chat">
-  <div class="message bot">Hola, mi amor. ¡Feliz aniversario! ❤️</div>
-  <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+  <div class="message bot text-center">Hola, mi amor. ¡Feliz aniversario! ❤️</div>
+  <div *ngFor="let msg of messages" class="message p-2 rounded" [ngClass]="msg.sender">
       {{ msg.text }}
   </div>
 </div>
-<div class="container fixed-bottom bg-white p-3 shadow">
+
+<!-- Sección de botones de opciones -->
+<div class="container-fluid fixed-bottom bg-white p-3 shadow-lg">
   <div class="row">
       <div class="col-6">
-          <button class="btn btn-primary w-100" (click)="sendMessage(1)">Gracias, mi vida 💕</button>
+          <button class="btn btn-success w-100 p-2 fw-bold" (click)="sendMessage(1)">
+              Gracias, mi vida 💕
+          </button>
       </div>
       <div class="col-6">
-          <button class="btn btn-danger w-100" (click)="sendMessage(2)">Awww, te amo 😍</button>
+          <button class="btn btn-danger w-100 p-2 fw-bold" (click)="sendMessage(2)">
+              Awww, te amo 😍
+          </button>
       </div>
   </div>
 </div>
