@@ -1,17 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    background-image: url(../assets/fondo-chat.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    align-items:  center;
-}
+
 
 header {
     background-color: #15523c;
@@ -29,6 +16,7 @@ header {
     right: 0;
     z-index: 1000;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .profile-pic {
@@ -43,7 +31,7 @@ header {
     max-width: 450px;
     margin: 80px auto 100px; /* Asegura que los mensajes no choquen con el header o los botones */
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     overflow-y: auto;
     max-height: 70vh;
@@ -58,6 +46,7 @@ header {
     word-wrap: break-word;
     max-width: 80%;
     align-self: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .bot {
@@ -112,6 +101,7 @@ footer .btn {
     background-color: #000000;
     color: white;
     margin: 0 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Espaciado entre botones */
@@ -124,3 +114,4 @@ footer .fa-paper-plane {
     font-size: 20px;
     color: white;
 }
+
