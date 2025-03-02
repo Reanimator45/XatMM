@@ -18,6 +18,19 @@
               (click)="sendMessage(i)">
           {{ btn.text }}
       </button>
-      <span class="text-white ms-3"><i class="fas fa-paper-plane fa-lg"></i></span>
+     
+    <button class="btn btn-outline-light ms-3" (click)="showToast()">
+      <i class="fas fa-paper-plane fa-lg"></i>
+  </button>
   </div>
 </footer>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="sendToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+          <div class="toast-body">
+              En Realidad este boton no tiene ninguna funcionalidad, pero ya que lo activaste me debes foto buba :P
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+  </div>
+</div>

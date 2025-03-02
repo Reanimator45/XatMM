@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+declare var bootstrap: any;
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -45,4 +48,12 @@ export class AppComponent {
   
     // Cambia el conjunto de botones al siguiente
     this.currentSet = selectedButton.nextSet;
-  }}
+  }
+  showToast() {
+    const toastEl = document.getElementById('sendToast');
+    if (toastEl) {
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    }
+   
+}}
