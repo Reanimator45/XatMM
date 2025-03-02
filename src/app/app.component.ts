@@ -9,32 +9,40 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  messages: { text: string, sender: string }[] = [
-    { text: 'Hola, mi amor. ¡Feliz aniversario! ❤️', sender: 'bot' }
-  ];
+  messages = [{ text: 'Hola, mi amor. ¡Feliz aniversario! ❤️', sender: 'bot' }];
 
-  responses = [
-    ['Tú eres mi todo 💖', 'Yo más, mi amor 😘'],
-    ['¿Sabes cuánto te amo?', '¿Quieres saber un secreto?'],
-    ['Más que a mi propia vida 😍', 'Es un secreto de amor 💕'],
-    ['Siempre estaré a tu lado 💏', 'Eres lo mejor que me ha pasado 💓'],
-    ['Gracias por hacerme tan feliz 💖', 'Sin ti mi mundo no sería igual 🌎❤️'],
-    ['Espero que siempre estemos juntos 💑', 'Eres el amor de mi vida 😘']
-  ];
+  // Definir tipo para los botones
+  buttonSets: { [key: string]: { text: string; response: string; nextSet: string }[] } = {
+    start: [
+      { text: 'Gracias, mi vida 💕', response: 'Eres el amor de mi vida ❤️', nextSet: 'set1' },
+      { text: 'Awww, te amo 😍', response: 'Yo también te amo infinitamente 💖', nextSet: 'set2' }
+    ],
+    set1: [
+      { text: '¿Por qué me amas tanto? 🥰', response: 'Porque eres mi persona favorita 💘', nextSet: 'final' },
+      { text: 'Eres lo mejor 💕', response: 'Tú eres lo mejor que me ha pasado 💓', nextSet: 'final' }
+    ],
+    set2: [
+      { text: 'Te amo hasta el infinito 🚀', response: 'Y yo más allá del universo 🌌', nextSet: 'final' },
+      { text: 'Siempre juntos 💑', response: 'Para siempre, mi amor 💍💖', nextSet: 'final' }
+    ],
+    final: [
+      { text: 'Volver a empezar 🔄', response: '¡Hagámoslo de nuevo! 😊', nextSet: 'start' }
+    ]
+  };
 
-  step = 0;
+  currentSet: string = 'start';
 
-  sendMessage(option: number) {
-    if (this.step >= this.responses.length) return;
-
-    // Mensaje del usuario
-    const userText = option === 1 ? "Gracias, mi vida 💕" : "Awww, te amo 😍";
-    this.messages.push({ text: userText, sender: 'user' });
-
-    // Simular respuesta del bot
+  sendMessage(index: number) {
+    const selectedButton = this.buttonSets[this.currentSet][index];
+  
+    // Agregar mensaje del usuario al chat
+    this.messages.push({ text: selectedButton.text, sender: 'user' });
+  
+    // Agregar respuesta del bot al chat
     setTimeout(() => {
-      this.messages.push({ text: this.responses[this.step][0], sender: 'bot' });
-      this.step++;
-    }, 1000);
-  }
-}
+      this.messages.push({ text: selectedButton.response, sender: 'bot' });
+    }, 500); // Simula un pequeño retraso
+  
+    // Cambia el conjunto de botones al siguiente
+    this.currentSet = selectedButton.nextSet;
+  }}

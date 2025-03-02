@@ -12,10 +12,12 @@
 
 <!-- Sección de botones de opciones -->
 <footer class="container-fluid fixed-bottom bg-dark text-white py-3 d-flex justify-content-center align-items-center">
-  <div class="d-flex justify-content-center gap-5 w-75">
-      <button class="btn btn-primary flex-grow-1 py-2" (click)="sendMessage(1)">Gracias, mi vida 💕</button>
-      <button class="btn btn-danger flex-grow-1 py-2" (click)="sendMessage(2)">Awww, te amo 😍</button>
-      <span class="text-white ms-3"><i class="fa-solid fa-paper-plane fa-lg"></i></span>
+  <div class="d-flex justify-content-center gap-3 w-75">
+      <button *ngFor="let btn of buttonSets[currentSet]; let i = index"
+              class="btn btn-primary flex-grow-1 py-2"
+              (click)="sendMessage(i)">
+          {{ btn.text }}
+      </button>
+      <span class="text-white ms-3"><i class="fas fa-paper-plane fa-lg"></i></span>
   </div>
 </footer>
-
