@@ -1,13 +1,43 @@
 <!-- app.component.html -->
 <header class="d-flex align-items-center p-2 shadow-sm">
   <img src="../assets/foto-perfil.jpg" alt="Foto de perfil" class="profile-pic me-2"> 💬 Momo 🐢
+  <button class="btn btn-light gallery-btn" (click)="toggleGallery()">
+    <i class="fas fa-images"></i>
+</button>
 </header>
 
 <div class="chat-container" id="chat">
-  <div class="message bot text-center">Hola, mi amor. ¡Feliz aniversario! ❤️</div>
+  <div class="message bot text-center">oña momaaa feliz 3er aniversario te amo mucho</div>
   <div *ngFor="let msg of messages" class="message p-2 rounded" [ngClass]="msg.sender">
       {{ msg.text }}
   </div>
+</div>
+
+<div class="gallery-menu" [ngClass]="{ 'open': showGallery }">
+  <button class="close-btn" (click)="toggleGallery()">✖</button>
+  <div class="gallery-grid">
+    <ng-container *ngFor="let img of galleryImages; let i = index">
+      <img *ngIf="i < galleryImages.length - 1"
+           [src]="img"
+           (click)="viewImage(img)"
+           class="gallery-item">
+  </ng-container>
+      <!-- Último elemento es un botón de video -->
+      <div class="gallery-item video-thumbnail" (click)="playVideo()" *ngIf="galleryImages.length > 0">
+          🎥 Video
+      </div>
+  </div>
+</div>
+
+<!-- Visualización de imagen o video -->
+<div *ngIf="selectedImage || showVideo" class="image-viewer" (click)="closeViewer()">
+  <img *ngIf="selectedImage" [src]="selectedImage" class="full-image">
+  
+  <!-- Video en lugar de imagen -->
+  <video *ngIf="showVideo" controls autoplay class="full-video">
+      <source src="/assets/video.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+  </video>
 </div>
 
 <!-- Sección de botones de opciones -->
@@ -28,7 +58,7 @@
   <div id="sendToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
           <div class="toast-body">
-              En Realidad este boton no tiene ninguna funcionalidad, pero ya que lo activaste me debes foto buba :P
+              En realidad este boton no tiene ninguna funcionalidad, pero ya que lo activaste me debes foto buba :P
           </div>
           <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
