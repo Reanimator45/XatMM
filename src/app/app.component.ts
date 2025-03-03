@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 declare var bootstrap: any;
 
@@ -7,7 +8,7 @@ declare var bootstrap: any;
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,SafeUrlPipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -97,5 +98,6 @@ closeViewer() {
   this.showVideo = false;
   this.selectedImage = null;
 }
-
+selectedVideo = 'https://www.youtube.com/embed/QNaAxcKngBw';
+profilePic = 'assets/foto-perfil.jpg';
 }

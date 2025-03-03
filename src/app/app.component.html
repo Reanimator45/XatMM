@@ -1,6 +1,6 @@
 <!-- app.component.html -->
 <header class="d-flex align-items-center p-2 shadow-sm">
-  <img src="XatMM/assets/foto-perfil.jpg" alt="Foto de perfil" class="profile-pic me-2"> 💬 Momo 🐢
+  <img [src]="profilePic" alt="Foto de perfil" class="profile-pic me-2"> 💬 Momo 🐢
   <button class="btn btn-light gallery-btn" (click)="toggleGallery()">
     <i class="fas fa-images"></i>
 </button>
@@ -34,10 +34,13 @@
   <img *ngIf="selectedImage" [src]="selectedImage" class="full-image">
   
   <!-- Video en lugar de imagen -->
-  <video *ngIf="showVideo" controls autoplay class="full-video">
-      <source src="XatMM/assets/video.mp4" type="video/mp4">
-      Tu navegador no soporta el video.
-  </video>
+  <div *ngIf="selectedVideo" class="video-container">
+    <iframe width="560" height="315"
+        [src]="selectedVideo | safeUrl"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+</div>
 </div>
 
 <!-- Sección de botones de opciones -->
